@@ -93,3 +93,12 @@ export const forgotPassword = async (email) => {
   }
   return data;
 };
+
+// ===== Cart API =====
+export const getServerCart = () => request("/cart");
+export const updateServerCartItem = (itemId, quantity) =>
+  request(`/cart/items/${itemId}`, { method: "PUT", body: { quantity } });
+export const removeServerCartItem = (itemId) =>
+  request(`/cart/items/${itemId}`, { method: "DELETE" });
+export const getProduct = (id) =>
+  request(`/products/${id}`, { auth: false }).then((d) => d.product);
